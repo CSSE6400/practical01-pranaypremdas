@@ -1,16 +1,15 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, make_response
 
 api = Blueprint('api', __name__, url_prefix='/api/v1')
 
 @api.route('/health')
 def health():
-    json = jsonify({"status": "ok"})
-    status_code = 200
-    return json, status_code
+    response = make_response(jsonify({"status": "ok"}), 200)
+    return response
 
 @api.route('/todos', methods=['GET'])
 def get_todos():
-    json = jsonify([{
+    response = make_response(jsonify([{
         "id": 1,
         "title": "Watch CSSE6400 Lecture",
         "description": "Watch the CSSE6400 lecture on ECHO360 for week 1",
@@ -18,13 +17,12 @@ def get_todos():
         "deadline_at": "2023-02-27T00:00:00",
         "created_at": "2023-02-20T00:00:00",
         "updated_at": "2023-02-20T00:00:00"
-        }])
-    status_code = 200
-    return json, status_code
+        }]), 200)
+    return response
 
 @api.route('/todos/<int:id>', methods=['GET'])
 def get_todo(id):
-    json = jsonify({
+    response = make_response(jsonify({
         "id": id,
         "title": "Watch CSSE6400 Lecture",
         "description": "Watch the CSSE6400 lecture on ECHO360 for week 1",
@@ -32,13 +30,12 @@ def get_todo(id):
         "deadline_at": "2023-02-27T00:00:00",
         "created_at": "2023-02-20T00:00:00",
         "updated_at": "2023-02-20T00:00:00"
-        })
-    status_code = 200
-    return json, status_code
+        }), 200)
+    return response
 
 @api.route('/todos', methods=['POST'])
 def create_todo():
-    json = jsonify({
+    response = make_response(jsonify({
         "id": 1,
         "title": "Watch CSSE6400 Lecture",
         "description": "Watch the CSSE6400 lecture on ECHO360 for week 1",
@@ -46,13 +43,12 @@ def create_todo():
         "deadline_at": "2023-02-27T00:00:00",
         "created_at": "2023-02-20T00:00:00",
         "updated_at": "2023-02-20T00:00:00"
-        })
-    status_code = 201
-    return json, status_code
+        }), 201)
+    return response
 
 @api.route('/todos/<int:id>', methods=['PUT'])
 def update_todo(id):
-    json = jsonify({
+    response = make_response(jsonify({
         "id": id,
         "title": "Watch CSSE6400 Lecture",
         "description": "Watch the CSSE6400 lecture on ECHO360 for week 1",
@@ -60,13 +56,12 @@ def update_todo(id):
         "deadline_at": "2023-02-27T00:00:00",
         "created_at": "2023-02-20T00:00:00",
         "updated_at": "2023-02-20T00:00:00"
-        })
-    status_code = 200
-    return json, status_code
+        }), 200)
+    return response
 
 @api.route('/todos/<int:id>', methods=['DELETE'])
 def delete_todo(id):
-    json = jsonify({
+    response = make_response(jsonify({
         "id": id,
         "title": "Watch CSSE6400 Lecture",
         "description": "Watch the CSSE6400 lecture on ECHO360 for week 1",
@@ -74,6 +69,5 @@ def delete_todo(id):
         "deadline_at": "2023-02-27T00:00:00",
         "created_at": "2023-02-20T00:00:00",
         "updated_at": "2023-02-20T00:00:00"
-        })
-    status_code = 200
-    return json, status_code
+        }), 200)
+    return response
