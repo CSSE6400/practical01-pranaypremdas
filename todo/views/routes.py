@@ -1,79 +1,86 @@
-from flask import Blueprint, jsonify, make_response
+from flask import Blueprint, jsonify
 
-api = Blueprint('api', __name__, url_prefix='/api/v1')
 
-@api.route('/health')
+api = Blueprint("api", __name__, url_prefix="/api/v1")
+
+
+@api.route("/health")
 def health():
-    response = make_response({"status": "ok"})
-    response.status_code = 200
-    return response
+    return jsonify({"status": "ok"})
 
-@api.route('/todos', methods=['GET'])
+
+@api.route("/todos", methods=["GET"])
 def get_todos():
-    response = make_response(jsonify([{
-        "id": 1,
-        "title": "Watch CSSE6400 Lecture",
-        "description": "Watch the CSSE6400 lecture on ECHO360 for week 1",
-        "completed": True,
-        "deadline_at": "2023-02-27T00:00:00",
-        "created_at": "2023-02-20T00:00:00",
-        "updated_at": "2023-02-20T00:00:00"
-        }]))
-    response.status_code = 200
-    return response
+    return jsonify(
+        [
+            {
+                "id": 1,
+                "title": "Watch CSSE6400 Lecture",
+                "description": "Watch the CSSE6400 lecture on ECHO360 for week 1",
+                "completed": True,
+                "deadline_at": "2023-02-27T00:00:00",
+                "created_at": "2023-02-20T00:00:00",
+                "updated_at": "2023-02-20T00:00:00",
+            }
+        ]
+    )
 
-@api.route('/todos/<int:id>', methods=['GET'])
+
+@api.route("/todos/<int:id>", methods=["GET"])
 def get_todo(id):
-    response = make_response(jsonify({
-        "id": id,
-        "title": "Watch CSSE6400 Lecture",
-        "description": "Watch the CSSE6400 lecture on ECHO360 for week 1",
-        "completed": True,
-        "deadline_at": "2023-02-27T00:00:00",
-        "created_at": "2023-02-20T00:00:00",
-        "updated_at": "2023-02-20T00:00:00"
-        }))
-    response.status_code = 200
-    return response
+    return jsonify(
+        {
+            "id": id,
+            "title": "Watch CSSE6400 Lecture",
+            "description": "Watch the CSSE6400 lecture on ECHO360 for week 1",
+            "completed": True,
+            "deadline_at": "2023-02-27T00:00:00",
+            "created_at": "2023-02-20T00:00:00",
+            "updated_at": "2023-02-20T00:00:00",
+        }
+    )
 
-@api.route('/todos', methods=['POST'])
+
+@api.route("/todos", methods=["POST"])
 def create_todo():
-    response = make_response(jsonify({
-        "id": 1,
-        "title": "Watch CSSE6400 Lecture",
-        "description": "Watch the CSSE6400 lecture on ECHO360 for week 1",
-        "completed": True,
-        "deadline_at": "2023-02-27T00:00:00",
-        "created_at": "2023-02-20T00:00:00",
-        "updated_at": "2023-02-20T00:00:00"
-        }))
-    response.status_code = 201
-    return response
+    return jsonify(
+        {
+            "id": 1,
+            "title": "Watch CSSE6400 Lecture",
+            "description": "Watch the CSSE6400 lecture on ECHO360 for week 1",
+            "completed": True,
+            "deadline_at": "2023-02-27T00:00:00",
+            "created_at": "2023-02-20T00:00:00",
+            "updated_at": "2023-02-20T00:00:00",
+        }
+    ), 201
 
-@api.route('/todos/<int:id>', methods=['PUT'])
+
+@api.route("/todos/<int:id>", methods=["PUT"])
 def update_todo(id):
-    response = make_response(jsonify({
-        "id": id,
-        "title": "Watch CSSE6400 Lecture",
-        "description": "Watch the CSSE6400 lecture on ECHO360 for week 1",
-        "completed": True,
-        "deadline_at": "2023-02-27T00:00:00",
-        "created_at": "2023-02-20T00:00:00",
-        "updated_at": "2023-02-20T00:00:00"
-        }))
-    response.status_code = 200
-    return response
+    return jsonify(
+        {
+            "id": id,
+            "title": "Watch CSSE6400 Lecture",
+            "description": "Watch the CSSE6400 lecture on ECHO360 for week 1",
+            "completed": True,
+            "deadline_at": "2023-02-27T00:00:00",
+            "created_at": "2023-02-20T00:00:00",
+            "updated_at": "2023-02-20T00:00:00",
+        }
+    )
 
-@api.route('/todos/<int:id>', methods=['DELETE'])
+
+@api.route("/todos/<int:id>", methods=["DELETE"])
 def delete_todo(id):
-    response = make_response(jsonify({
-        "id": id,
-        "title": "Watch CSSE6400 Lecture",
-        "description": "Watch the CSSE6400 lecture on ECHO360 for week 1",
-        "completed": True,
-        "deadline_at": "2023-02-27T00:00:00",
-        "created_at": "2023-02-20T00:00:00",
-        "updated_at": "2023-02-20T00:00:00"
-        }))
-    response.status_code = 201
-    return response
+    return jsonify(
+        {
+            "id": id,
+            "title": "Watch CSSE6400 Lecture",
+            "description": "Watch the CSSE6400 lecture on ECHO360 for week 1",
+            "completed": True,
+            "deadline_at": "2023-02-27T00:00:00",
+            "created_at": "2023-02-20T00:00:00",
+            "updated_at": "2023-02-20T00:00:00",
+        }
+    )
