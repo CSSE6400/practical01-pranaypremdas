@@ -5,5 +5,5 @@ def create_app():
 
     from .views.routes import api
     app.register_blueprint(api)
-    
+    app.config['JSON_SORT_KEYS'] = False
     return app
