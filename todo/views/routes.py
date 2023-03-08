@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify
 
 api = Blueprint('api', __name__, url_prefix='/api/v1')
 
-@api.route('/health')
+@api.route('/health', methods=['GET'])
 def health():
     json = jsonify({"status": "ok"})
     status_code = 200
@@ -22,7 +22,7 @@ def get_todos():
     status_code = 200
     return json, status_code
 
-
+@api.route('/health', methods=['GET'])
 def get_todo(id):
     json = jsonify([{
         "id": id,
