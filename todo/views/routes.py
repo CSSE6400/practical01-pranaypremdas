@@ -19,6 +19,7 @@ def get_todos():
         "updated_at": "2023-02-20T00:00:00"
         }])
 
+@api.route('/todos/<int:id>', methods=['GET'])
 def get_todo(id):
     return jsonify([{
         "id": id,
